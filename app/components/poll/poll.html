@@ -1,0 +1,65 @@
+<link rel="import" href="../../vendor/core-media-query/core-media-query.html">
+<link rel="import" href="../map/map.html">
+<link rel="import" href="../opinion/opinion.html">
+
+<polymer-element name="poll-card" attributes="polldata user" inline flex center-center horizontal layout>
+    <template>
+
+        <!-- build:css(app/components/poll) /public/poll.min.css -->
+        <link href="poll.css" rel="stylesheet">
+        <!-- endbuild -->
+
+        <div>
+            <div class="poll-card">
+                <paper-shadow z="1">
+                    <div class="poll-header">
+                        <a href="{{polldata.user.url}}" flex two> <img class="avatar" src="{{polldata.user.imgurl}}"/></a>
+                        <span class="question" flex>{{polldata.poll}}</span>
+                    </div>
+                    <opinion-map polldata="{{polldata}}" user="{{user}}"></opinion-map>
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- blend -->
+                    <ins class="adsbygoogle"
+                         style="display:inline-block;width:728px;height:15px"
+                         data-ad-client="ca-pub-3520867855368369"
+                         data-ad-slot="1771790532"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+
+                </paper-shadow>
+                <div class="center">
+                    <template repeat="{{op in opinions}}">
+                        <opinion-card opinion="{{op}}" user="{{user}}" style="display:block;"></opinion-card>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </template>
+    <script>
+        (function(){
+            var opinionConstants = {
+                OpinionsUrl: "/opinions/"
+            };
+
+            Polymer({
+                created: function() {
+                    this.polldata = {};
+                    this.user = {};
+
+                },
+                ready: function() {
+                    var pollcard = this;
+                    if (undefined != this.polldata.poll_id) {
+                      window.$.ajax({
+                        url: opinionConstants.OpinionsUrl + this.polldata.poll_id
+                      }).done(function (opinions) {
+                        pollcard.opinions = opinions;
+                      });
+                    }
+                }
+            });
+
+        })();
+    </script>
+</polymer-element>

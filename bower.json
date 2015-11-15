@@ -1,0 +1,49 @@
+{
+  "name": "Delhiopinions",
+  "version": "0.1.0",
+  "authors": [
+    "Ashish Thakwani & Jeevan Devanur"
+  ],
+  "description": "Platform to express opinions on Delhi elections.",
+  "keywords": [
+    "Delhi",
+    "Election",
+    "India",
+    "AAP",
+    "BJP",
+    "Congress"
+  ],
+  "directory": "./app/vendor",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "app/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.5.1",
+    "core-toolbar": "Polymer/core-toolbar#~0.5.1",
+    "paper-tabs": "Polymer/paper-tabs#~0.5.1",
+    "paper-input": "Polymer/paper-input#~0.5.1",
+    "core-header-panel": "Polymer/core-header-panel#~0.5.1",
+    "paper-fab": "Polymer/paper-fab#~0.5.1",
+    "core-ajax": "Polymer/core-ajax#~0.5.1",
+    "fontawesome": "~4.2.0",
+    "paper-progress": "Polymer/paper-progress#~0.5.1",
+    "paper-spinner": "Polymer/paper-spinner#~0.5.1",
+    "time-elements": "~0.4.0",
+    "topojson": "~1.6.18",
+    "leaflet": "~0.7.3",
+    "jquery": "~2.1.1",
+    "webcomponentsjs": "~0.7.15",
+    "core-menu": "Polymer/core-menu#~0.5.6",
+    "paper-item": "Polymer/paper-item#~0.5.6",
+    "core-scaffold": "Polymer/core-scaffold#~0.5.6",
+    "fontawesome-iconset": "~4.2.0-b2"
+  },
+  "resolutions": {
+    "webcomponentsjs": "^0.5"
+  }
+}

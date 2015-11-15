@@ -1,0 +1,19 @@
+{
+  "index": {
+    "styles": "<link href='./bundle/index.css' media='all' rel='stylesheet' type='text/css'/>",
+    "scripts": "<script src='./bundle/index.js' type='text/javascript'></script>"
+  },
+  "layout": {
+    "styles": "<link href='./bundle/layout.css' media='all' rel='stylesheet' type='text/css'/>"
+  },
+  "opinion": {
+    "styles": "<link href='./bundle/opinion.css' media='all' rel='stylesheet' type='text/css'/>"
+  },
+  "poll": {
+    "styles": "<link href='./bundle/poll.css' media='all' rel='stylesheet' type='text/css'/>"
+  },
+  "map": {
+    "styles": "<link href='./bundle/map.css' media='all' rel='stylesheet' type='text/css'/>",
+    "scripts": "<script src='./bundle/map.js' type='text/javascript'></script>"
+  }
+}

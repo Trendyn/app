@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title>Delhiopinions</title>
+
+    <script src="./vendor/webcomponentsjs/webcomponents.min.js"></script>
+
+    <!-- build:js ./components/index.min.js -->
+    <script src="./components/app.js"></script>
+    <!-- endbuild -->
+
+    <link rel="import"
+          href="./vendor/core-scaffold/core-scaffold.html">
+    <link rel="import"
+          href="./vendor/core-toolbar/core-toolbar.html">
+    <link rel="import"
+          href="./vendor/fontawesome-iconset/fa-icons.html">
+    <link rel="import"
+          href="./vendor/core-menu/core-menu.html">
+    <link rel="import"
+          href="./vendor/paper-button/paper-button.html">
+    <link rel="import"
+          href="./vendor/paper-ripple/paper-ripple.html">
+    <link rel="import"
+          href="./vendor/paper-input/paper-input.html">
+    <link rel="import"
+          href="./vendor/paper-shadow/paper-shadow.html">
+    <link rel="import"
+          href="./vendor/paper-item/paper-item.html">
+    <link rel="import"
+          href="./components/jquery/jquery.html">
+    <style>
+        body {
+            font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
+            font-size: 14px;
+            min-width: 300px;
+            margin: 0;
+            padding: 0px;
+            background-color: #ececec;
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+            -webkit-touch-callout: none;
+        }
+    </style>
+
+</head>
+
+<body fullbleed layout vertical ng-app="ocApp" unresolved>
+    <polymer-element name="delhi-opinions">
+        <template>
+            <style>
+                body {
+                    font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
+                    font-size: 14px;
+                    min-width: 300px;
+                    margin: 0;
+                    padding: 0px;
+                    background-color: #ececec;
+                    -webkit-tap-highlight-color: rgba(0,0,0,0);
+                    -webkit-touch-callout: none;
+                }
+
+                core-header-panel {
+                    height: 100%;
+                    overflow: auto;
+                    -webkit-overflow-scrolling: touch;
+                }
+                core-toolbar {
+                    background: #be362b;
+                    color: white;
+                    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
+                }
+                core-scaffold::shadow core-toolbar {
+                    background: #be362b;
+                    color: white;
+                    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
+                    z-index: 100;
+                }
+                paper-button {
+                    text-transform: none;
+                    font-size: medium;
+                    font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
+                }
+                paper-button.custom > core-icon {
+                    margin-right: 5px;
+                }
+                core-icon-button /deep/ core-icon[role=img] {
+                                            height: 5px;
+                                            width: 5px;
+                                            padding: 1px;
+                                            margin: 1px;
+                                        }
+                core-icon-button {
+                    padding: 0 1px 1px 1px;
+                    margin: 1px;
+                }
+            </style>
+
+            <core-scaffold id="scaffold">
+                    <nav>
+                        <core-toolbar id="toolbar">Delhi Opinions</core-toolbar>
+                        <core-menu selected="0">
+                            <paper-button class="custom" layout horizontal center flex>
+                                <core-icon icon="fa:user" label="Home"></core-icon>
+                                My Profile
+                            </paper-button>
+                            <paper-button on-click="{{logout}}"  class="custom" layout horizontal center flex>
+                                <core-icon icon="fa:sign-out" label="Logout" ></core-icon>
+                                Logout
+                            </paper-button>
+                        </core-menu>
+                    </nav>
+                    <div tool layout horizontal flex>
+                        <div flex>Delhi Opinions</div>
+                    </div>
+                    <content></content>
+            </core-scaffold>
+        </template>
+        <script>
+            Polymer({
+                ready: function() {
+                    var e = this.shadowRoot.querySelector('core-scaffold');
+                    e.shadowRoot.querySelector('core-drawer-panel').forceNarrow = true;
+                },
+                logout: function()
+                {
+                    window.location.href = "/logout";
+                }
+            });
+        </script>
+    </polymer-element>
+    <delhi-opinions>
+        <div ng-view=""></div>
+    </delhi-opinions>
+</body>
+</html>

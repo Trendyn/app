@@ -1,0 +1,205 @@
+/**
+ * Created by athakwani on 11/27/14.
+ */
+
+.opinion-card {
+    display: block;
+    position: relative;
+    min-width: 300px;
+    min-height: 100px;
+    margin: 10px auto;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    background-color: rgb(255, 255, 255);
+}
+
+.opinion-header {
+    display: block;
+    position: relative;
+    height: 50px;
+    margin: 0px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.name {
+    margin-top: 5px;
+    margin-left: 5px;
+    display: inline;
+    position: absolute;
+}
+
+.name a {
+    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+    color: #be362b;
+    text-decoration: none;
+}
+
+.name a:hover {
+    text-decoration: underline;
+}
+
+.header-avatar {
+    display: inline;
+    position: relative;
+}
+
+.header-avatar img {
+    margin-top: 10px;
+    margin-left: 10px;
+    height: 40px;
+    width: 40px;
+}
+
+.time {
+    display: block;
+    margin-top: 5px;
+    font-size: 10px;
+    color: #7e7e7e;
+}
+
+.content {
+    display: block;
+    position: relative;
+    margin: 10px;
+    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-weight: normal;
+    color: #000000;
+}
+
+.links {
+    display: block;
+    position: relative;
+    margin: 10px;
+}
+
+.dot {
+    font-family: Helvetica, Arial, 'lucida grande',tahoma,verdana,arial,sans-serif;
+    font-weight: normal;
+    font-size: 12px;
+    color: #be362b;
+    text-decoration: none;
+}
+
+.links a {
+    font-family: Helvetica, Arial, 'lucida grande',tahoma,verdana,arial,sans-serif;
+    font-weight: normal;
+    font-size: 12px;
+    color: #be362b;
+    text-decoration: none;
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
+
+.pane {
+    border-bottom: 1px solid #dedede;
+}
+
+.opinion-footer {
+    display: block;
+    position: relative;
+    margin: 0px;
+    padding-top : 5px;
+    padding-bottom: 10px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    background-color: #FFF1F0;
+    background-image: url("noise.png");
+    background-repeat: repeat;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.comment {
+    display: block;
+    margin-top: 5px;
+    margin-left: 15px;
+    padding-bottom: 5px;
+    color: #000000;
+}
+
+.comment-avatar {
+    display: inline;
+}
+
+.comment-avatar img {
+    height: 30px;
+    width: 30px;
+    vertical-align: top;
+}
+
+
+.content {
+    display: inline-block;
+    position: relative;
+    margin-left: 5px;
+    color: #000000;
+    width: 85%;
+}
+
+.text {
+    position: relative;
+}
+
+.text a {
+    font-weight: bold;
+    font-size: 12px;
+    color: #be362b;
+    text-decoration: none;
+}
+
+.text a:hover {
+    text-decoration: underline;
+}
+
+.time {
+    display: block;
+    margin-top: 5px;
+    font-size: 10px;
+    color: #7e7e7e;
+}
+
+.post {
+    display: block;
+    position: relative;
+    margin-top: 5px;
+    margin-left: 15px;
+}
+
+.post-img {
+    display: inline-block;
+    position: relative;
+    width: 30px;
+}
+
+.post-img img {
+    height: 30px;
+    width: 30px;
+    vertical-align: top;
+}
+
+.input {
+    display: inline-block;
+    position: relative;
+    width: 85%;
+}
+
+.input input {
+    height: 25px;
+    margin-left: 5px;
+    width: 100%;
+    vertical-align: middle;
+    vertical-align: -webkit-baseline-middle;
+    padding: 5px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 1px solid #e0e2e7;
+    color: #000000;
+}
+
+/*# sourceMappingURL=maps/opinion.css.map */

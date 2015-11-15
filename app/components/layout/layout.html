@@ -1,0 +1,78 @@
+<link rel="import"
+      href="../components/poll/poll.html">
+
+        <style>
+            #margin {
+                margin: 30px;
+            }
+
+            .center-container {
+                position: relative;
+                min-width: 400px;
+                margin: 10px;
+            }
+
+            @media (min-width: 1100px) {
+                .center-container {
+                    min-width: 1000px;
+                    width: auto;
+                }
+            }
+
+            @media (max-width: 1100px) {
+                .center-container {
+                    min-width: 1000px;
+                    width: auto;
+                }
+            }
+            @media (max-width: 900px) {
+                .center-container {
+                    min-width: 800px;
+                    width: auto;
+                }
+            }
+            @media (max-width: 800px) {
+                .center-container {
+                    min-width: 700px;
+                    width: auto;
+                }
+            }
+            @media (max-width: 700px) {
+                .center-container {
+                    min-width: 600px;
+                    width: auto;
+                }
+            }
+
+            @media (max-width: 600px) {
+                .center-container {
+                    min-width: 500px;
+                    width: auto;
+                }
+            }
+
+            @media (max-width: 500px) {
+                .center-container {
+                    min-width: 400px;
+                    width: auto;
+                }
+            }
+
+            @media (max-width: 400px) {
+                .center-container {
+                    min-width: 300px;
+                    margin: 0px auto;
+                    padding: 0px;
+                }
+            }
+
+        </style>
+
+<div id="margin"></div>
+
+<div class="center-container" vertical center layout>
+    <poll-list ng-repeat="(key, value) in pollsdata">
+        <poll-card user="{{user}}" polldata="{{value}}"></poll-card
+                >
+    </poll-list>
+</div>

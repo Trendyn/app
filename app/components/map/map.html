@@ -1,0 +1,93 @@
+<link rel="import" href="../jquery/jquery.html">
+<link rel="import" href="../../vendor/paper-progress/paper-progress.html">
+<link rel="import" href="../../vendor/paper-spinner/paper-spinner.html">
+<link rel="import" href="../../components/fontawesome/fontawesome.html">
+
+
+<!-- build:js(app/components/map) /public/map.min.js -->
+<script src="../../vendor/topojson/topojson.js"></script>
+<script src="../../vendor/leaflet/dist/leaflet-src.js"></script>
+<script src="map.js"></script>
+<script src="Leaflet.back.js"></script>
+<!-- endbuild -->
+
+
+<polymer-element name="opinion-map" attributes="polldata user" inline flex>
+    <template>
+
+        <!-- build:css(app/components/map) /public/map.min.css -->
+        <link href="../../vendor/leaflet/dist/leaflet.css" rel="stylesheet">
+        <link href="animate.css" rel="stylesheet">
+        <link href="map.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../vendor/fontawesome/css/font-awesome.min.css">
+        <!-- endbuild -->
+
+        <paper-progress class="progress-bar" value="{{mapProgress}}" secondaryProgesss="{{votesProgess}}"></paper-progress>
+        <paper-spinner class="spinner" active="{{loading}}" ></paper-spinner>
+        <div id="map" class="map">
+        </div>
+<!--        <div id="world" on-click="{{zoomToWorld}}" class="map-control fa fa-2x fa-globe"></div>
+        <div id="country" on-click="{{zoomToCountry}}" class="map-control fa fa-2x fa-flag"></div>
+        <div id="state" on-click="{{zoomToState}}" class="map-control fa fa-2x fa-home"></div>
+-->
+    </template>
+    <script>
+        (function() {
+            var mapconstants= {
+                "maptileurl": "",
+                "latlang": [
+                    21,
+                    83
+                ],
+                "MapsUrl": "/MAPS/WORLD/",
+                "worldVotesUrl": "/getworldvotes/",
+                "countryVotesUrl": "/getcountryvotes/",
+                "stateVotesUrl": "/getstatevotes/",
+                "votesurl": "/votes",
+                "defaultColor": "#D4D4D4",
+                "featureStyle": {
+                    "weight": .8,
+                    "opacity": 1,
+                    "color": "white",
+                    "fillOpacity": 1,
+                    "fillColor": "#D4D4D4"
+                },
+                "highlightFeature": {
+                    "weight": 2.5,
+                    "opacity": 1,
+                    "color": "white",
+                    "fillOpacity": 1
+                },
+                "disabledFeature": {
+                    "weight": .8,
+                    "opacity": 1,
+                    "color": "white",
+                    "fillOpacity": 1,
+                    "fillColor": "#D4D4D4"
+                }
+            };
+
+            Polymer({
+                created: function() {
+                    this.polldata = {};
+                    this.user = {};
+                    this.mapProgress = 0;
+                    this.votesProgress = 0;
+                },
+                domReady: function() {
+                    this.mapCtrl = new OpinionMap(this, mapconstants);
+                    this.mapCtrl.show();
+                },
+                zoomToWorld: function(event, detail, sender) {
+                    this.mapCtrl.zoomToWorld();
+                },
+                zoomToCountry: function(event, detail, sender) {
+                    this.mapCtrl.zoomToHomeCountry();
+                },
+                zoomToState: function(event, detail, sender) {
+                    this.mapCtrl.zoomToHomeState();
+                }
+            });
+        })();
+    </script>
+</polymer-element>

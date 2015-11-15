@@ -1,0 +1,117 @@
+<link rel="import" href="../../components/jquery/jquery.html">
+<link rel="import" href="../../components/time/time.html">
+<link rel="import" href="../../vendor/core-ajax/core-ajax.html">
+
+
+<polymer-element name="opinion-card" attributes="opinion user" inline flex center-center horizontal layout>
+    <template>
+
+        <!-- build:css(app/components/opinion) /public/opinion.min.css -->
+        <link href="opinion.css" rel="stylesheet">
+        <!-- endbuild -->
+
+        <paper-shadow z="1" class="opinion-card">
+            <div class="opinion-header">
+                <div class="header-avatar">
+                    <a href="{{opinion.user.url}}" flex two> <img src="{{opinion.user.imgurl}}"/> </a>
+                </div>
+                <div class="name">
+                    <a href="{{opinion.user.url}}"> {{opinion.user.name}} </a>
+                    <time is="time-ago" class="time" datetime="{{opinion.time}}"></time>
+                </div>
+            </div>
+
+            <div class="pane">
+                <div class="content">
+                    {{opinion.opinion}}
+                </div>
+                <div class="links">
+                    <a href="{{like}}" class="like">Endorse</a>
+                    <span class="dot"> · </span>
+                    <a href="{{comments}}" class="comments">Comments</a>
+                </div>
+            </div>
+
+            <div class="opinion-footer">
+                <template repeat="{{comment in comments}}">
+                    <div class="comment">
+                        <div class="comment-avatar">
+                            <a href="{{comment.user.url}}"><img src="{{comment.user.imgurl}}"></img></a>
+                        </div>
+                        <div class="comment-content">
+                            <div class="text">
+                                <a href="{{comment.user.url}}">{{comment.user.name}}</a> {{comment.text}}
+                                <time is="time-ago" class="time" datetime="{{comment.time}}"></time>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+                <div class="post">
+                    <div class="post-img">
+                        <a href="{{opinion.user.url}}" flex two> <img src="{{opinion.user.imgurl}}"/></a>
+                    </div>
+                    <div class="input">
+                        <input on-change="{{postComment}}" value="{{newcomment}}" placeholder="Write a comment.">
+                        <core-ajax id="postcmnt"
+                                   auto="false"
+                                   method="POST"
+                                   contentType='application/json'
+                                   url="/pollcomments/{{opinion.id}}"
+                                   body='{"id":"{{opinion.id}}","comment":"{{newcomment}}"}'
+                                   on-core-response="{{postCommentResp}}"
+                                   handleAs="json">
+                        </core-ajax>
+
+                    </div>
+                </div>
+            </div>
+        </paper-shadow>
+    </template>
+
+    <script>
+         (function() {
+            var commentsConstants = {
+                "CommentsUrl": "/pollcomments/"
+            };
+            Polymer({
+                created: function() {
+                    this.opinion = {};
+                    this.user = {};
+                },
+
+                ready: function() {
+                    var footer = this;
+                    window.$.ajax({
+                        url: commentsConstants.CommentsUrl + this.opinion.id
+                    }).done(function (data) {
+                        footer.comments = data.comments.list;
+                    });
+                },
+
+                /* Function to send comment data to server */
+                postComment: function(event, detail, sender) {
+                    this.$.postcmnt.go();
+                },
+
+                /* Function to handle comment posted response from server */
+                postCommentResp: function(event, response) {
+                    /* Update the comments to display the new comment */
+                    var comment = {};
+                    comment.user = {};
+
+                    comment.text = this.newcomment;
+                    comment.time = response.response.dt;
+                    comment.user.id = this.user.id;
+                    comment.user.imgurl = this.user.usrImgURL;
+                    comment.user.name = this.user.name;
+                    comment.user.url = "http://0.0.0.0:9000/user";
+
+                    this.comments.push(comment);
+
+                    /* reset the newcomment */
+                    this.newcomment="";
+                }
+            });
+        })();
+    </script>
+</polymer-element>
