@@ -1,5 +1,5 @@
 #Set base image to Ubuntu
-FROM registry.opynios.com:5000/app:0.1
+FROM tutum.co/opynios/app
 
 #File Author / Maintainer
 MAINTAINER opynios
