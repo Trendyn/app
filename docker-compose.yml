@@ -2,38 +2,17 @@ app:
   build: .
   ports:
     - "80:80"
-  container_name: app
-
+  links:
+    - redis
+    - mysql
 redis:
   ports:
     - "6379:6379"
-  image: registry.opynios.com:5000/redis:0.1
-  container_name: redis
+  image: tutum/redis
 
 mysql:
   build: ./dbScripts/ 
   ports:
     - "3306:3306"
-  container_name: db
 
-elasticsearch:
-  image: registry.opynios.com:5000/elasticsearch:0.1
-  command: elasticsearch -Des.network.host=0.0.0.0 
-  container_name: elasticsearch
-  environment:
-    - ES_HEAP_SIZE=1000m
-  ports:
-    - "9200:9200"
-
-logstash:
-  build: ./docker-elk/logstash 
-  container_name: logger
-  ports:
-    - "9998:9998"
-
-kibana:
-  build: ./docker-elk/kibana
-  container_name: kibana
-  ports:
-    - "5601:5601"
 
