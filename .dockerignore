@@ -2,3 +2,4 @@ node_modules
 build
 tutum.yml
 deploy.sh
+replacevars.sh
