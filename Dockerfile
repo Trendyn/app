@@ -1,8 +1,14 @@
 #Set base image to Ubuntu
-FROM tutum.co/opynios/app:0.1
+FROM ubuntu:14.04 
 
 #File Author / Maintainer
 MAINTAINER opynios
+
+RUN apt-get update && apt-get install python build-essential wget git -y 
+
+ADD install_node.sh . 
+RUN chmod a+x install_node.sh && sync && ./install_node.sh && sync && npm install -g bower gulp
+
 
 # use changes to package.json to force Docker not to use the cache
 # when we change our application's nodejs dependencies:
