@@ -1,5 +1,5 @@
 #Set base image to Ubuntu
-FROM tutum.co/opynios/app
+FROM tutum.co/opynios/app:0.1
 
 #File Author / Maintainer
 MAINTAINER opynios

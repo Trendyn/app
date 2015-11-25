@@ -1,18 +1,24 @@
 app:
   build: .
+  expose:
+    - "80"
   ports:
-    - "80:80"
-  links:
-    - redis
-    - mysql
+    - "80"
+  volumes:
+    - ".:/app"
+  container_name: app
+
 redis:
-  ports:
-    - "6379:6379"
-  image: tutum/redis
+  expose:
+    - "6379"
+  image: tutum/redis 
+  environment:
+    - 'REDIS_PASS="allowcache"'
+  container_name: redis
 
-mysql:
-  build: ./dbScripts/ 
-  ports:
-    - "3306:3306"
-
+db:
+  build: ./db/ 
+  expose:
+    - "3306"
+  container_name: mysql
 
