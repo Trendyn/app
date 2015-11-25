@@ -1,0 +1,27 @@
+app:
+  image: 'tutum.co/opynios/com:${OP_USER}'
+  links:
+    - mysql
+    - redis
+  ports:
+    - '80'
+  tags:
+    - staging
+mysql:
+  image: 'tutum.co/opynios/db:${OP_USER}'
+  cpu_shares: 4096
+  mem_limit: 512m
+  ports:
+    - '3306'
+  restart: always
+  tags:
+    - staging
+redis:
+  image: 'tutum/redis:latest'
+  environment:
+    - 'REDIS_PASS="allowcache"'
+  ports:
+    - '6379'
+  tags:
+    - staging
+
