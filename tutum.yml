@@ -1,5 +1,5 @@
 app:
-  image: 'tutum.co/opynios/com:${OP_USER}'
+  image: 'tutum.co/opynios/app:${OP_USER}'
   links:
     - mysql
     - redis
