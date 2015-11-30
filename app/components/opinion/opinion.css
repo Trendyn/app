@@ -157,32 +157,33 @@
     color: #7e7e7e;
 }
 
-.post {
+.post-comment {
     display: block;
     position: relative;
-    margin-top: 5px;
-    margin-left: 15px;
+    background-color: #FFF1F0;
 }
 
-.post-img {
+.post-comment-img {
     display: inline-block;
     position: relative;
     width: 30px;
+    margin-left: 15px;
+    margin-bottom: 10px;
 }
 
-.post-img img {
+.post-comment-img img {
     height: 30px;
     width: 30px;
     vertical-align: top;
 }
 
-.input {
+.post-comment-input {
     display: inline-block;
     position: relative;
     width: 85%;
 }
 
-.input input {
+.post-comment-input input {
     height: 25px;
     margin-left: 5px;
     width: 100%;

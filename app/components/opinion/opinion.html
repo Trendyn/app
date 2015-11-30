@@ -13,7 +13,7 @@
         <paper-shadow z="1" class="opinion-card">
             <div class="opinion-header">
                 <div class="header-avatar">
-                    <a href="{{opinion.user.url}}" flex two> <img src="{{opinion.user.imgurl}}"/> </a>
+                    <a href="{{opinion.user.url}}" flex two> <img src="{{opinion.user.imgurl}}"> </a>
                 </div>
                 <div class="name">
                     <a href="{{opinion.user.url}}"> {{opinion.user.name}} </a>
@@ -36,7 +36,7 @@
                 <template repeat="{{comment in comments}}">
                     <div class="comment">
                         <div class="comment-avatar">
-                            <a href="{{comment.user.url}}"><img src="{{comment.user.imgurl}}"></img></a>
+                            <a href="{{comment.user.url}}"><img src="{{comment.user.imgurl}}"></a>
                         </div>
                         <div class="comment-content">
                             <div class="text">
@@ -46,25 +46,27 @@
                         </div>
                     </div>
                 </template>
-                <div class="post">
-                    <div class="post-img">
-                        <a href="{{opinion.user.url}}" flex two> <img src="{{opinion.user.imgurl}}"/></a>
-                    </div>
-                    <div class="input">
-                        <input on-change="{{postComment}}" value="{{newcomment}}" placeholder="Write a comment.">
-                        <core-ajax id="postcmnt"
-                                   auto="false"
-                                   method="POST"
-                                   contentType='application/json'
-                                   url="/pollcomments/{{opinion.id}}"
-                                   body='{"id":"{{opinion.id}}","comment":"{{newcomment}}"}'
-                                   on-core-response="{{postCommentResp}}"
-                                   handleAs="json">
-                        </core-ajax>
+            </div>
 
-                    </div>
+            <div class="post-comment">
+                <div class="post-comment-img">
+                    <a href="{{opinion.user.url}}" flex two> <img src="{{opinion.user.imgurl}}"/></a>
+                </div>
+                <div class="post-comment-input">
+                    <input on-change="{{postComment}}" value="{{newcomment}}" placeholder="Write a comment">
+                    <core-ajax id="postcmnt"
+                               auto="false"
+                               method="POST"
+                               contentType='application/json'
+                               url="/pollcomments/{{opinion.id}}"
+                               body='{"id":"{{opinion.id}}","comment":"{{newcomment}}"}'
+                               on-core-response="{{postCommentResp}}"
+                               handleAs="json">
+                    </core-ajax>
+
                 </div>
             </div>
+
         </paper-shadow>
     </template>
 
@@ -73,7 +75,7 @@
             var commentsConstants = {
                 "CommentsUrl": "/pollcomments/"
             };
-            Polymer({
+            Polymer('opinion-card', {
                 created: function() {
                     this.opinion = {};
                     this.user = {};

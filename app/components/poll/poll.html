@@ -9,57 +9,90 @@
         <link href="poll.css" rel="stylesheet">
         <!-- endbuild -->
 
-        <div>
-            <div class="poll-card">
-                <paper-shadow z="1">
-                    <div class="poll-header">
-                        <a href="{{polldata.user.url}}" flex two> <img class="avatar" src="{{polldata.user.imgurl}}"/></a>
-                        <span class="question" flex>{{polldata.poll}}</span>
+          <div class="poll-card">
+              <paper-shadow z="1" class="poll-card">
+                  <div class="poll-header">
+                      <a href="{{polldata.user.url}}" flex two> <img class="avatar" src="{{polldata.user.imgurl}}"/></a>
+                      <span class="question" flex>{{polldata.poll}}</span>
+                  </div>
+
+                  <opinion-map polldata="{{polldata}}" user="{{user}}"></opinion-map>
+
+                  <div class="post-opinion">
+                    <div class="post-opinion-img">
+                      <a href="{{user.usrImgURL}}" flex two> <img src="{{user.usrImgURL}}"></a>
                     </div>
-                    <opinion-map polldata="{{polldata}}" user="{{user}}"></opinion-map>
-                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                    <!-- blend -->
-                    <ins class="adsbygoogle"
-                         style="display:inline-block;width:728px;height:15px"
-                         data-ad-client="ca-pub-3520867855368369"
-                         data-ad-slot="1771790532"></ins>
-                    <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
+                    <div class="post-opinion-input">
+                      <input on-change="{{postOpinion}}" value="{{newopinion}}" placeholder="Write your opinion">
+                      <core-ajax id="postopn"
+                                 auto="false"
+                                 method="POST"
+                                 contentType='application/json'
+                                 url="/opinions/"
+                                 body='{"pollid":"{{polldata.poll_id}}","opinion":"{{newopinion}}"}'
+                                 on-core-response="{{postOpinionResp}}"
+                                 handleAs="json">
+                      </core-ajax>
+                    </div>
+                  </div>
+             </paper-shadow>
 
-                </paper-shadow>
-                <div class="center">
-                    <template repeat="{{op in opinions}}">
-                        <opinion-card opinion="{{op}}" user="{{user}}" style="display:block;"></opinion-card>
-                    </template>
-                </div>
-            </div>
-        </div>
-    </template>
-    <script>
-        (function(){
-            var opinionConstants = {
-                OpinionsUrl: "/opinions/"
-            };
+              <div class="center">
+                  <template repeat="{{op in opinions}}">
+                      <opinion-card opinion="{{op}}" user="{{user}}" style="display:block;"></opinion-card>
+                  </template>
+              </div>
 
-            Polymer({
-                created: function() {
-                    this.polldata = {};
-                    this.user = {};
+          </div>
+  </template>
+  <script>
+      (function(){
+          var opinionConstants = {
+              OpinionsUrl: "/opinions/"
+          };
 
-                },
-                ready: function() {
-                    var pollcard = this;
-                    if (undefined != this.polldata.poll_id) {
-                      window.$.ajax({
-                        url: opinionConstants.OpinionsUrl + this.polldata.poll_id
-                      }).done(function (opinions) {
-                        pollcard.opinions = opinions;
-                      });
-                    }
-                }
-            });
+          Polymer('poll-card', {
+              created: function() {
+                  this.polldata = {};
+                  this.user = {};
+              },
+              ready: function() {
+                  var pollcard = this;
+                  if (undefined != this.polldata.poll_id) {
+                    window.$.ajax({
+                      url: opinionConstants.OpinionsUrl + this.polldata.poll_id
+                    }).done(function (opinions) {
+                      pollcard.opinions = opinions;
+                    });
+                  }
+              },
 
-        })();
-    </script>
+              /* Function to send opinion data to server */
+            postOpinion: function(event, detail, sender) {
+                this.$.postopn.go();
+              },
+
+              /* Function to handle opinion posted response from server */
+              postOpinionResp: function(event, response) {
+                /* Update the opinions to display the new opinion */
+                var opinion = {};
+                opinion.user = {};
+
+                opinion.id = response.response.id;
+                opinion.opinion = this.newopinion;
+                opinion.time = response.response.dt;
+                opinion.user.id = this.user.id;
+                opinion.user.imgurl = this.user.usrImgURL;
+                opinion.user.name = this.user.name;
+                opinion.user.url = "http://0.0.0.0:9000/user";
+
+                this.opinions.push(opinion);
+
+                /* reset the newcomment */
+                this.newopinion="";
+              }
+          });
+
+      })();
+  </script>
 </polymer-element>
