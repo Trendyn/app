@@ -2,6 +2,3 @@
 
 Dev Enviroment Instructions
 ---------------------------------------------
-/* Run Protractor e2e test cases */
-webdriver-manager start
-protractor protractor_conf.js
