@@ -8,7 +8,7 @@ if which docker-compose > /dev/null; then
   echo "docker-compose found"
 else
   curl -L https://github.com/docker/compose/releases/download/1.5.1/docker-compose-`uname -s`-`uname -m` > ./bin/docker-compose
-  chmod +x /usr/local/bin/docker-compose
+  chmod +x ./bin/docker-compose
 fi
 
 ./bin/docker-compose -p $OP_USER build
