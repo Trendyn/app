@@ -4,10 +4,14 @@ if [ -z "$OP_USER" ]; then
   exit 1
 fi
 
-curl -L https://github.com/docker/compose/releases/download/1.5.1/docker-compose-`uname -s`-`uname -m` > ./docker-compose
-chmod +x ./docker-compose
+if which docker-compose > /dev/null; then
+  echo "docker-compose found"
+else
+  curl -L https://github.com/docker/compose/releases/download/1.5.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+  chmod +x /usr/local/bin/docker-compose
+fi
 
-./docker-compose -p $OP_USER build
+docker-compose -p $OP_USER build
 docker tag "${OP_USER//-}_app" "tutum.co/opynios/app:${OP_USER}"
 docker tag "${OP_USER//-}_db" "tutum.co/opynios/db:${OP_USER}"
 docker push "tutum.co/opynios/db:${OP_USER}"
