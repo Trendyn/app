@@ -10,6 +10,7 @@
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
+  background-color: #ececec;
   color:white;
 }
 
@@ -17,7 +18,7 @@
     display: block;
     margin: 30px;
     height: 10px;
-    background-color: #ececec;
+    background-color: #ffffff;
 }
 
 .center {
@@ -111,4 +112,43 @@
         margin: 0 auto;
         padding: 0px;
     }
+}
+
+.post-opinion {
+  display: block;
+  position: relative;
+  margin: auto;
+  background-color: #efefef;
+}
+
+.post-opinion-img {
+  display: inline-block;
+  position: relative;
+  margin: 10px;
+}
+
+.post-opinion-img img {
+  height: 30px;
+  width: 30px;
+  vertical-align: top;
+}
+
+.post-opinion-input {
+  display: inline-block;
+  position: relative;
+  width: 83%;
+  top: 4px
+}
+
+.post-opinion-input input {
+  height: 25px;
+  margin-left: 5px;
+  width: 100%;
+  vertical-align: middle;
+  padding: 5px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 1px solid #e0e2e7;
+  color: #000000;
 }
