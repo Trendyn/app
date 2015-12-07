@@ -17,8 +17,7 @@ docker tag "${OP_USER//-}_db" "tutum.co/opynios/db:${OP_USER}"
 docker push "tutum.co/opynios/db:${OP_USER}"
 docker push "tutum.co/opynios/app:${OP_USER}"
 ./replacevars.sh tutum-staging.yml OP_USER=${OP_USER}
-tutum stack create -f tutum-staging.yml -n "staging-${OP_USER}" --sync
-tutum stack start "staging-${OP_USER}" --sync | jq .services[2] | sed 's/\/api\/.*\/service\/\(.*\)\//\1/' | xargs tutum service inspect  | grep APP_ENV_TUTUM_CONTAINER_API_URL | sed 's/.*\/api\/.*\/container\/\(.*\)\/.*/\1/' | xargs tutum container inspect | grep endpoint_uri | sed 's/.*\(http.*\)\/.*/\1/'
+tutum stack create -f tutum-staging.yml -n "staging-${OP_USER}" --sync | xargs -i tutum stack start {} --sync | xargs tutum stack inspect | jq .services[2] | sed 's/\/api\/.*\/service\/\(.*\)\//\1/' | xargs tutum service inspect  | grep APP_ENV_TUTUM_CONTAINER_API_URL | sed 's/.*\/api\/.*\/container\/\(.*\)\/.*/\1/' | xargs tutum container inspect | grep endpoint_uri | sed 's/.*\(http.*\)\/.*/\1/'
 
 
 
