@@ -19,7 +19,7 @@ docker push "tutum.co/opynios/app:${OP_USER}"
 docker rmi "${OP_USER//-}_app" "${OP_USER//-}_db" "tutum.co/opynios/db:${OP_USER}" "tutum.co/opynios/app:${OP_USER}"
 
 ./replacevars.sh tutum-staging.yml OP_USER=${OP_USER}
-tutum stack create -f tutum-staging.yml -n "staging-${OP_USER}" --sync | grep [0-9a-f]*- | xargs -i tutum stack start {} --sync | grep [0-9a-f]*- | xargs tutum stack inspect | jq .services[2] | sed 's/\/api\/.*\/service\/\(.*\)\//\1/' | xargs tutum service inspect  | grep APP_ENV_TUTUM_CONTAINER_API_URL | sed 's/.*\/api\/.*\/container\/\(.*\)\/.*/\1/' | xargs tutum container inspect | grep endpoint_uri | sed 's/.*\(http.*\)\/.*/\1/' | tee /dev/stderr | xargs -i export STAGED_URL={}
+export STAGED_URL=`tutum stack create -f tutum-staging.yml -n "staging-${OP_USER}" --sync | grep [0-9a-f]*- | xargs -i tutum stack start {} --sync | grep [0-9a-f]*- | xargs tutum stack inspect | jq .services[2] | sed 's/\/api\/.*\/service\/\(.*\)\//\1/' | xargs tutum service inspect  | grep APP_ENV_TUTUM_CONTAINER_API_URL | sed 's/.*\/api\/.*\/container\/\(.*\)\/.*/\1/' | xargs tutum container inspect | grep endpoint_uri | sed 's/.*\(http.*\)\/.*/\1/' | tee /dev/stderr`
 
 
 
