@@ -12,3 +12,8 @@ After changes are complete, commit and push new branch using following commands.
 Now visit github.com and open a pull request for review.
 Once pull request is created opynios continuous integration environment will start automated build, stage and test process.
 
+Make sure to sync to master and delete the branch using below command.
+1. git checkout master
+2. git pull
+3. git branch -D <branch name>
+
