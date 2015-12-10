@@ -17,3 +17,4 @@ Make sure to sync to master and delete the branch using below command.
 2. git pull
 3. git branch -D <branch name>
 
+
