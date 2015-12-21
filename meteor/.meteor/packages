@@ -1,0 +1,20 @@
+# Meteor packages used by this project, one per line.
+#
+# 'meteor add' and 'meteor remove' will edit this file for you,
+# but you can also edit it by hand.
+
+meteor-platform
+less
+accounts-password
+iron:router
+coffeescript
+meteorhacks:inject-initial
+differential:vulcanize
+
+reactive-var
+meteorhacks:npm
+
+
+npm-container
+numtel:mysql
+momentjs:moment

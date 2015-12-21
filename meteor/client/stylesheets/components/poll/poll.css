@@ -1,0 +1,154 @@
+/**
+ * Created by athakwani on 11/27/14.
+ */
+
+.poll-card {
+    position: relative;
+    min-height: 300px;
+    margin: 10px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    background-color: #f9f9f9;
+    color:white;
+}
+
+.gap {
+    display: block;
+    margin: 30px;
+    height: 10px;
+    background-color: #ffffff;
+}
+
+.center {
+    margin: 0 auto;
+}
+
+.avatar {
+    display: inline;
+    position: relative;
+    height: 40px;
+    width: 40px;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.question {
+    display: inline;
+    position: absolute;
+    margin: 15px;
+    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-weight: bold;
+    color: #000000;
+}
+
+.poll-header {
+    display: block;
+    position: relative;
+    height: 50px;
+    margin: 0px;
+    border-bottom: 1px solid #eee;
+    background-color: #ffffff;
+}
+
+@media (min-width: 1100px) {
+    .poll-card {
+        width: 1000px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 1100px) {
+    .poll-card {
+        width: 1000px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 1000px) {
+    .poll-card {
+        width: 900px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 900px) {
+    .poll-card {
+        width: 800px;
+        margin: 0 auto;
+    }
+}
+@media (max-width: 800px) {
+    .poll-card {
+        width: 700px;
+        margin: 0 auto;
+    }
+}
+@media (max-width: 700px) {
+    .poll-card {
+        width: 600px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .poll-card {
+        width: 500px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 500px) {
+    .poll-card {
+        width: 400px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 400px) {
+    .poll-card {
+        width: 300px;
+        margin: 0 auto;
+        padding: 0px;
+    }
+}
+
+.post-opinion {
+    display: block;
+    position: relative;
+    margin: auto;
+    background-color: #efefef;
+}
+
+.post-opinion-img {
+    display: inline-block;
+    position: relative;
+    margin: 10px;
+}
+
+.post-opinion-img img {
+    height: 30px;
+    width: 30px;
+    vertical-align: top;
+}
+
+.post-opinion-input {
+    display: inline-block;
+    position: relative;
+    width: 83%;
+    top: 4px
+}
+
+.post-opinion-input input {
+    height: 25px;
+    margin-left: 5px;
+    width: 100%;
+    vertical-align: middle;
+    padding: 5px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 1px solid #e0e2e7;
+    color: #000000;
+}
