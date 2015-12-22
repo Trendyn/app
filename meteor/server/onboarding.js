@@ -1,4 +1,3 @@
-var config = Meteor.npmRequire(process.env.PWD + "/../lib/config/config");
 var toClass = {}.toString;
 
 Meteor.methods({
@@ -83,11 +82,11 @@ function mergeDoc(collection, obj) {
 }
 /* Live connection to database */
 var liveDb = new LiveMysql({
-  host     : config.db_host,
-  port     : config.db_port,
-  user     : config.db_user,
-  password : config.db_password,
-  database : config.db
+  host     : Meteor.settings.db_host,
+  port     : Meteor.settings.db_port,
+  user     : Meteor.settings.db_user,
+  password : Meteor.settings.db_password,
+  database : Meteor.settings.db
 });
 
 var closeAndExit = function() {
@@ -129,8 +128,6 @@ Meteor.publish("opinions", function (id) {
       { table: 'comments' } ]
   ).on('update', function(diff, data) {
 
-      console.log(diff.added);
-
 
       for(var i=0 ; i < diff.added.length; i++) {
 
@@ -162,7 +159,6 @@ Meteor.publish("opinions", function (id) {
           ]
         });
 
-        console.log(JSON.stringify(json,null,2));
         pollCollection = mergeDoc(pollCollection, json);
 
         if(!initializing)
