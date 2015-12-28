@@ -1,1 +1,3 @@
-Opinions = new Mongo.Collection("polls");
+Polls    = new Mongo.Collection("polls");
+Poll     = new Mongo.Collection("poll");
+

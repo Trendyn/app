@@ -1,17 +1,18 @@
 <template name="dashboardLayout">
   {{#globalLayout}}
 
-  <core-drawer-panel data-drawer-panel>
+  <core-drawer-panel data-drawer-panel responsiveWidth="5000px">
 
     <!-- Drawer -->
     <core-header-panel mode="waterfall" drawer>
       <core-toolbar class="toolbar toolbar-dark">
 
       <paper-item class="home toolbar-item">
-        <a href="/">Home</a>
+        <a href="/">Opynios.com</a>
       </paper-item>
 
       </core-toolbar>
+
       <div layout vertical fit>
         <core-menu class="nav">
 
@@ -63,9 +64,9 @@
     </core-header-panel>
 
     <!-- Main Content -->
-    <core-header-panel mode="waterfall" main>
+    <core-header-panel mode="waterfall" shadow main>
       <core-toolbar class="toolbar toolbar-primary">
-        <paper-icon-button class="hidden-md narrow" icon="menu" data-action="toggle-drawer">
+        <paper-icon-button class="narrow" icon="menu" data-action="toggle-drawer">
         </paper-icon-button>
         {{> yield "contentToolbar"}}
       </core-toolbar>

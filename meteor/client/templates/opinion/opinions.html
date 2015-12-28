@@ -1,0 +1,43 @@
+<template name="opinion">
+    <paper-shadow z="1" class="opinion-card">
+        <div class="opinion-header">
+            <div class="header-avatar">
+                <a href="{{opinion_user_img_url}}" flex two> <img src="{{opinion_user_img_url}}"> </a>
+            </div>
+            <div class="name">
+                <a href="{{opinion_user_img_url}}"> {{opinion_user_name}} </a>
+                <span class="time">{{time opinion_time}}</span>
+            </div>
+        </div>
+
+        <div class="pane">
+            <div class="opinion_content">
+                {{opinion}}
+            </div>
+            <div class="links">
+                <a href="{{like}}" class="like">Endorse</a>
+                <span class="dot"> · </span>
+                <a href="{{comments}}" class="comments">Comments</a>
+            </div>
+        </div>
+
+        <div class="opinion-footer">
+            {{#each comments id}}
+                {{#if comment_deleted}}
+                {{else}}
+                    {{> comment}}
+                {{/if}}
+            {{/each}}
+        </div>
+
+        <div class="post-comment">
+            <div class="post-comment-img">
+                <a href="{{opinion_user_img_url}}" flex two> <img src="{{opinion_user_img_url}}"/></a>
+            </div>
+            <div class="post-comment-input">
+                <input on-change="{{postComment}}" value="{{newcomment}}" placeholder="Write a comment">
+            </div>
+        </div>
+
+    </paper-shadow>
+</template>

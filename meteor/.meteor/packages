@@ -15,3 +15,11 @@ numtel:mysql
 momentjs:moment
 
 
+accounts-facebook
+service-configuration
+accounts-ui
+
+
+npm-container
+pcel:mysql
+peerlibrary:util

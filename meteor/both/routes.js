@@ -14,6 +14,12 @@
     controller: "PublicController"
   });
 
+  Router.route("/login", {
+    name: "accounts.login",
+    template: "login",
+    controller: "PublicController"
+  });
+
   Router.route("/sign-in", {
     name: "accounts.signIn",
     template: "signIn",
