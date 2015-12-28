@@ -1,0 +1,13 @@
+<template name="login">
+    <paper-shadow z="1" class="login-card">
+        {{#if currentUser}}
+            {{currentUser.services.facebook.name}} -
+            {{currentUser.services.facebook.gender}}
+            <button id="logout">Logout</button>
+        {{else}}
+            <paper-button role="button" tabindex="0" animated="" aria-disabled="false" class="at-social-btn" id="at-facebook" name="facebook" raised="" elevation="1">
+                Sign In with Facebook
+            </paper-button>
+        {{/if}}
+    </paper-shadow>
+</template>

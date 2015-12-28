@@ -1,0 +1,13 @@
+<template name="comment">
+    <div class="comment">
+        <div class="comment-avatar">
+            <a href="{{comment_user_img_url}}"><img src="{{comment_user_img_url}}"></a>
+        </div>
+        <div class="comment-content">
+            <div class="text">
+                <a href="{{comment_user_img_url}}">{{comment_user_name}}</a> {{comment}}
+                <span class="time">{{time comment_time}}</span>
+            </div>
+        </div>
+    </div>
+</template>

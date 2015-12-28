@@ -1,0 +1,40 @@
+<template name="poll">
+    {{#each poll 1}}
+        <div class="poll-card">
+            <paper-shadow z="1" class="poll-card">
+                <div class="poll-header" style="z-index:10;">
+                    <a href="{{poll_user_img_url}}" flex two> <img class="avatar" src="{{poll_user_img_url}}"/></a>
+                    <span class="question" flex>{{question}}</span>
+                </div>
+
+                <div class="row">
+                    <div class="card-panel stats-card white-text col l6" style="width: 33%; visibility: visible; -webkit-animation: slideInDown 500ms;">
+                        <!-- Background Progress -->
+                        <div class="progress red lighten-2 background">
+                            <div class="red darken-2" style="width: 75%"></div>
+                        </div>
+
+                        <i class="fa fa-comments-o"></i>
+                        <span class="count">145</span>
+                        <div class="name">Votes</div>
+                    </div>
+                    <div class="card-panel stats-card white-text col l6" style="width: 33%;  visibility: visible; -webkit-animation: slideInDown 500ms;">
+                        <!-- Background Progress -->
+                        <div class="progress red lighten-2 background">
+                            <div class="red darken-2" style="width: 75%"></div>
+                        </div>
+
+                        <i class="fa fa-comments-o"></i>
+                        <span class="count">145</span>
+                        <div class="name">Votes</div>
+                    </div>
+                </div>
+            </paper-shadow>
+
+            {{#each opinions 1}}
+                {{> opinion}}
+            {{/each}}
+
+        </div>
+    {{/each}}
+</template>

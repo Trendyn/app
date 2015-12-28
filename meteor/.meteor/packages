@@ -10,11 +10,16 @@ iron:router
 coffeescript
 meteorhacks:inject-initial
 differential:vulcanize
-
 reactive-var
-meteorhacks:npm
+numtel:mysql
+momentjs:moment
+
+
+accounts-facebook
+service-configuration
+accounts-ui
 
 
 npm-container
-numtel:mysql
-momentjs:moment
+pcel:mysql
+peerlibrary:util
