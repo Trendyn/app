@@ -20,6 +20,9 @@ service-configuration
 accounts-ui
 
 
-npm-container
 pcel:mysql
 peerlibrary:util
+meteorhacks:npm
+
+
+npm-container

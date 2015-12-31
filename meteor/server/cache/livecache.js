@@ -1,5 +1,5 @@
 liveCache = function(query, name, collection, field, watch) {
-  console.log("Opening live db connection");
+  console.log("Opening live db connection for %s", name);
 
   /* Live connection to database */
   var liveDb = new LiveMysql({
@@ -24,16 +24,12 @@ liveCache = function(query, name, collection, field, watch) {
   console.log("Publishing %s", name);
 
   Meteor.publish(name, function (id) {
-    console.log("published");
+    console.log("published %s", name);
     check(id, Number);
 
     if(isEmptyObject(cacheMap)) {
-      liveDb.select(util.format(query,id),[watch])
+      liveDb.select(util.format(query,id), watch)
         .on('update', Meteor.bindEnvironment(function (diff, data) {
-
-          console.log("Got data");
-          console.log(diff);
-
 
           for (var i = 0; i < diff.added.length; i++) {
             var json = diff.added[i];
@@ -56,4 +52,3 @@ liveCache = function(query, name, collection, field, watch) {
     return collection.find(obj);
   });
 };
-

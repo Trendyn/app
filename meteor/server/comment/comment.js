@@ -1,8 +1,3 @@
-var knex = Npm.require("knex")({
-  client: "mysql"
-});
-
-
 Comments = new Mongo.Collection("comments", {connection: null});
 
 Meteor.methods({
@@ -43,7 +38,7 @@ var q = knex.select("c.id AS id",
          .where({"o.poll_id": "%d"})
          .toString();
 
+
   liveCache(q, "comments", Comments, "poll_id",
   [ { table: 'comments' },
     { table: 'users' } ]);
-

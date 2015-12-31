@@ -4,5 +4,4 @@ build
 phantomjsdriver.log
 app/components/index.min.js
 meteor/packages/schnie:vulcanize/
-meteor/packages/npm-container/
 meteor/public/components

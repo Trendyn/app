@@ -1,8 +1,4 @@
-var knex = Npm.require("knex")({
-  client: "mysql"
-});
-
-Opinions = new Mongo.Collection("opinions", {connection: null});
+Opinions = new Mongo.Collection('opinions', {connection: null});
 
 var q = knex.select("o.id AS id",
   "o.poll_id AS poll_id",
